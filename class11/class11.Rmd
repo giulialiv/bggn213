@@ -38,11 +38,38 @@ library(bio3d)
 pdb <- read.pdb("1hsg")
 ```
 ```{r}
-
+pdb$atom
+```
+```
+```
+```{r}
+pdb$atom[1,"resid"]
 ```
 
+```{r}
+aa321(pdb$atom[,"resid"])
 ```
 
+#select atoms Question 8. First select "protein" then write out a file: 1hsg_protein.pdb"
+```{r}
+#atom select()
+prot<- atom.select(pdb, "protein", value=TRUE)
+#write.pdb()
+write.pdb(prot, file="1hsg_protein.pdb")
+```
+#now the same for the ligan
+```{r}
+#atom select(): this function  might be confusing so think about it as in vmd when we select for the ligand only or the protein. 
+lig<- atom.select(pdb, "ligand", value=TRUE)
+#write.pdb()
+write.pdb(lig, file="1hsg_ligand.pdb")
+```
+```{r}
+library(bio3d.view)
+#view(lig)
+view(pdb,"overview",col="sse")
+#this package bio3d.view is not working on all platform wight now.
+```
 
 
 

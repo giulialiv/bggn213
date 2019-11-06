@@ -15,13 +15,9 @@ source("http://tinyurl.com/rescale-R")
 rescale(1:10)
 ```
 
-```{r}
-rescale(c(3,10, NA,7, "giulia"))
-```
+
 #understand the stop function which is built in our code. It allows you to give a more specific comment if an error occurs. 
-```{r}
-rescale2 (c(3,10, NA,7, "giulia"))
-```
+
 # "!" will flip something in true/false
 #We want to write a function, called both_na(), that counts how many positions in two input vectors, x and y, both have a missing value. start with a simple definition of x and y. You can use & (means and) to check at the same time 2 variables.
 
@@ -59,10 +55,6 @@ which.min (s1)
 #exclude it from the average calculations
 mean(s2[-which.min(s2)],na.rm=TRUE)
 ```
-```{r}
-x<- s2
-sum(x[-which.min(x)], na.rm=TRUE) #TOTAL MINUS THE WORST
-sum(x[-which.min(x)], na.rm=TRUE/lenght(x)-1)
 
 ```
 
