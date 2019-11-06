@@ -1,0 +1,49 @@
+---
+title: "class11"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Q1: Download a CSV file from the PDB site (accessible from “Analyze” -> “PDB Statistics” 
+#“by Experimental Method and Molecular Type”. Move this CSV file into your RStudio project
+#and determine the percentage of structures solved by X-Ray and Electron Microscopy. Also can
+#you determine what proportion of structures are protein
+
+```{r}
+data<-read.csv("Data Export Summary.csv")
+```
+```{r}
+total<-sum(data$Total)
+total
+```
+
+```{r}
+data$Total
+```
+```{r}
+ans <- data$Total/sum(data$Total) * 100
+names(ans) <- data$Experimental.Method
+round(ans,2)
+```
+```{r}
+round(sum(data$Proteins)/sum(data$Total) * 100, 2)
+```
+#working with biomolecular data in R
+```{r}
+library(bio3d)
+```
+```{r}
+pdb <- read.pdb("1hsg")
+```
+```{r}
+
+```
+
+```
+
+
+
+
+
