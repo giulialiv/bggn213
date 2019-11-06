@@ -70,6 +70,22 @@ library(bio3d.view)
 view(pdb,"overview",col="sse")
 #this package bio3d.view is not working on all platform wight now.
 ```
+#computing connectivity from coordinates: let's try a NMA:
+
+
+```{r}
+# Load the package
+pdb <- read.pdb("1hel")
+# Normal mode analysis calculation
+modes <- nma(pdb)
+m7 <- mktrj(modes,
+ mode=7,
+ file="mode_7.pdb")
+view(m7, col=vec2color( rmsf(m7) ))
+```
+
+
+
 
 
 
