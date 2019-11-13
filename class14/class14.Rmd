@@ -164,5 +164,15 @@ library("org.Hs.eg.db")
 ```{r}
 columns(org.Hs.eg.db)
 ```
+```{r}
+mycounts$symbol <- mapIds(org.Hs.eg.db,
+                     keys=row.names(mycounts), # Our gene names
+                     keytype="ENSEMBL",        # The format of our genenames
+                     column="SYMBOL",          # The new format we want to add
+                     multiVals="first")
+```
+```{r}
+head(mycounts)
+```
 
 
