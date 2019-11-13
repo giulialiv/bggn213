@@ -80,4 +80,26 @@ head(counts[,control.id])
 control.mean <-rowSums(counts[,control.id])/length(control.id)
 names(control.mean) <- counts$ensgene
 ```
+#Do the same for drug treated exps
+```{r}
+treated <- metadata[metadata [,"dex"]=="treated",]
+treated.mean <- rowSums(counts[, treated$id])/4
+names(treated.mean) <- counts$ensgene
+```
+```{r}
+meancounts <-data.frame(control.mean, treated.mean)
+```
+```{r}
+plot(meancounts$control.mean, meancounts$treated.mean)
+```
+#Good case for a log plot
+```{r}
+plot(meancounts$control.mean, meancounts$treated.mean, log="xy")
+```
+#add new column called log2fc to see the fold change
+```{r}
+meancounts$log2fc <- log2(meancounts[,"treated.mean"]/meancounts[,"control.mean"])
+head(meancounts)
+```
+
 
