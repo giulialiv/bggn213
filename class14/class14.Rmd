@@ -174,5 +174,58 @@ mycounts$symbol <- mapIds(org.Hs.eg.db,
 ```{r}
 head(mycounts)
 ```
+#We still need to work on statistical tests. DESeq packages does everything we did for us included statistics. But in this way we learned a lot...
 
+```{r}
+library(DESeq2)
+```
+#We will use the DESeqDataSetFromMatrix() function to build the required DESeqDataSet object and call it dds, short for our DESeqDataSet. 
+```{r}
+dds <- DESeqDataSetFromMatrix(countData=counts, 
+                              colData=metadata, 
+                              design=~dex, 
+                              tidy=TRUE)
+
+```
+```{r}
+dds <- DESeq(dds)
+```
+```{r}
+res<-results(dds)
+res
+```
+#let's make a vulcano plot: summary figures are frequently used to highlight the proportion of genes that are both significantly regulated and display a high fold change.Typically these plots shows the log fold change on the X-axis, and the −log10 of the p-value on the Y-axis (the more significant the p-value, the larger the −log10 of that value will be).
+```{r}
+plot(res$log2FoldChange, res$padj)
+```
+#the previous plot is not good because we are not seeing the data under p<0.05 which are the significant ones. Changing the axis would not work...we have to flip it adding -log
+```{r}
+plot( res$log2FoldChange,  -log(res$padj), 
+      xlab="Log2(FoldChange)",
+      ylab="-Log(P-value)")
+```
+#We want color coding for significan changes and thresholds for -2 and 2 as well in the graph
+```{r}
+plot(res$log2FoldChange,  -log(res$padj), 
+ ylab="-Log(P-value)", xlab="Log2(FoldChange)")
+# Add some cut-off lines
+abline(v=c(-2,2), col="darkgray", lty=2)
+abline(h=-log(0.05), col="darkgray", lty=2)
+```
+```{r}
+# Setup our custom point color vector 
+mycols <- rep("gray", nrow(res))
+mycols[ abs(res$log2FoldChange) > 2 ]  <- "red" 
+
+inds <- (res$padj < 0.01) & (abs(res$log2FoldChange) > 2 )
+mycols[ inds ] <- "blue"
+
+# Volcano plot with custom colors 
+plot( res$log2FoldChange,  -log(res$padj), 
+ col=mycols, ylab="-Log(P-value)", xlab="Log2(FoldChange)" )
+
+# Cut-off lines
+abline(v=c(-2,2), col="gray", lty=2)
+abline(h=-log(0.1), col="gray", lty=2)
+```
 
