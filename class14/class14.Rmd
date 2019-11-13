@@ -198,7 +198,7 @@ res
 ```{r}
 plot(res$log2FoldChange, res$padj)
 ```
-#the previous plot is not good because we are not seeing the data under p<0.05 which are the significant ones. Changing the axis would not work...we have to flip it adding -log
+#the previous plot is not good because we are not seeing the data under p<0.05 which are the significant ones. Changing the axis would not work...we have to flip it adding -log. Points high up on the y-axis (above the horizontal line) are significantly regulated.
 ```{r}
 plot( res$log2FoldChange,  -log(res$padj), 
       xlab="Log2(FoldChange)",
