@@ -29,4 +29,55 @@ head(counts)
 ```{r}
 head(metadata)
 ```
+#SETUP Bioconductor DESeq2
+```{r eval=FALSE}
+install.packages("BiocManager")
+BiocManager::install()
+BiocManager::install("DESeq2")
+```
+```{r}
+head(metadata)
+```
+how many genes do we have in this data set?
+
+```{r}
+nrow(counts)
+```
+how many experiments?
+```{r}
+ncol(counts)-1
+```
+let's make sure metadata id col matches the colnames of counts
+```{r}
+colnames(counts)[-1]
+```
+```{r}
+metadata$id
+```
+
+```{r}
+all(colnames(counts)[-1] ==metadata$id)
+```
+all function to look across a vector of logicals
+```{r}
+all(c(T,T,T))
+```
+#Analysis: compare averages of controls are different from treated averages. First we need to access the columns of our countdata that are control and then find their mean.
+```{r}
+metadata$dex =="control"
+```
+#these are the columns I want to access
+```{r}
+control.id <-metadata[metadata$dex =="control", ]$id
+control.id
+```
+
+```{r}
+head(counts[,control.id])
+```
+#mean counts for control experiments(lenght(control.id) is number of columns -i.e. 4 here)
+```{r}
+control.mean <-rowSums(counts[,control.id])/length(control.id)
+names(control.mean) <- counts$ensgene
+```
 
