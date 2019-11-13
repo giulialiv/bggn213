@@ -101,5 +101,48 @@ plot(meancounts$control.mean, meancounts$treated.mean, log="xy")
 meancounts$log2fc <- log2(meancounts[,"treated.mean"]/meancounts[,"control.mean"])
 head(meancounts)
 ```
+#We want to remove NaN and the zero points from further analysis. Which will return only the values that you are looking for.
+#test for finding zero entries
+```{r}
+x<- c(5,8,0,5)
+x==0
+which(x==0)
+```
+```{r}
+x<-data.frame(happy=c(5,6,0,0), sad=c(0,5,5,0))
+x==0
+```
+#arr.ind gives you more insights on the position (row and column) of the NAN or zero values. you can use it even to just know the position of a gene. unique allows you to exclude those
+```{r}
+unique(which(x==0, arr.ind = TRUE)[,1])
+```
+#focus on rows that only have zero entries
+```{r}
+inds<-unique(which(x==0, arr.ind = TRUE)[,1])
+x[-inds,]
+```
+#write another test
+```{r}
+x<-data.frame(analine=c(1,2,0,0), giulia=c(0,0,3,0))
+x==0
+```
+```{r}
+
+which(x==0, arr.ind = TRUE)
+```
+```{r}
+unique(which(x==0, arr.ind = TRUE)[,1])
+```
+
+# now apply it to our metacounts data (i.e. removing NaNs and zero)
+```{r}
+to.rm<-unique(which(meancounts[,1:2]==0, arr.ind=TRUE)[,1])
+mycounts <- meancounts[-to.rm,]
+head(mycounts)
+```
+#How many genes do I have left?
+```{r}
+nrow(mycounts)
+```
 
 
