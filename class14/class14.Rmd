@@ -144,5 +144,15 @@ head(mycounts)
 ```{r}
 nrow(mycounts)
 ```
+#A common threshold used for calling something differentially expressed is a log2(FoldChange) of greater than 2 or less than -2. Let’s filter the dataset both ways to see how many genes are up or down-regulated.
+```{r}
+up.ind <- mycounts$log2fc > 2
+down.ind <- mycounts$log2fc < (-2)
+```
+#To count how many are excluded:
+```{r}
+sum(up.ind)
+sum(down.ind)
+```
 
 
