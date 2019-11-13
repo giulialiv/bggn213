@@ -154,5 +154,15 @@ down.ind <- mycounts$log2fc < (-2)
 sum(up.ind)
 sum(down.ind)
 ```
+#In cases where you don't have a preferred annotation file at hand you can use other Bioconductor packages for annotation.
+#Bioconductor's annotation packages help with mapping various ID schemes to each other. Here we load the AnnotationDbi package and the annotation package org.Hs.eg.db.
+
+```{r}
+library("AnnotationDbi")
+library("org.Hs.eg.db")
+```
+```{r}
+columns(org.Hs.eg.db)
+```
 
 
