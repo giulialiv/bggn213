@@ -6,4 +6,4 @@ The main class homepage is here:(https://bioboot.github.io/bggn213_F19/).
 Giuliaclasswork.md
 layout: page
 title: "Giulia classwork"
-permalink: https://giulialiv.github.io/bggn213/
+permalink: //giulialiv.github.io/bggn213/
