@@ -4,7 +4,7 @@ This is my work from [BGGN13 at UC San Diego] Fall 2019
 
 The main class homepage is here:(https://bioboot.github.io/bggn213_F19/).
 
-**Content**:
+**Content of the class**:
 
 **-Class05:** [R graphics](https://github.com/giulialiv/bggn213/tree/master/class05)
 
