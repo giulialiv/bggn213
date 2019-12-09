@@ -1,8 +1,6 @@
 theme: jekyll-theme-architect
-title-img: https://github.com/giulialiv/bggn213/blob/master/IMG_4258%20(1).jpg
+logo: https://bioboot.github.io/bimm143_F18/assets/img/logo.png
 title: "Giulia's Bioinformatics Class (BGGN213, Fall 2019)"
-title-separator: "-"
-timezone: "America/Vancouver"
 highlighter: rouge
 name: Giulia Livrizzi
 email: "gilivriz@ucsd.edu"
