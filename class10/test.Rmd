@@ -1,0 +1,11 @@
+---
+title: "Test"
+author: "Giulia Livrizzi"
+date: "11/1/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## how to tell Git is important: add to stage by cliclink the box
