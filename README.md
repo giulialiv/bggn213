@@ -4,7 +4,7 @@ title-img: //github.com/giulialiv/bggn213/blob/a9bbe1e36158261ad19f0fdcc086f5afb
 
 This is my work from [BGGN13 at UC San Diego] Fall 2019
 
-Click [here](https://bioboot.github.io/bggn213_F19/)to go to the main class homepage.
+Click [here](https://bioboot.github.io/bggn213_F19/) to go to the main class homepage.
 
 **Content of the class**:
 
