@@ -1,0 +1,98 @@
+---
+title: "machine learning"
+author: "Giulia Livrizzi"
+date: "10/25/2019"
+output: html_document
+---
+##K-mean examples. Baby steps for machine learning (make up some data to cluster)
+```{r}
+tmp <- c(rnorm(30,-3), rnorm(30,3)) #data are going to be flipped around -3/3
+x <- cbind(x=tmp, y=rev(tmp))
+plot(x)
+```
+#Use the kmeans() function setting k to 2 and nstart=20
+#Inspect/print the results
+#Q. How many points are in each cluster?
+#Q. What ‘component’ of your result object details
+# cluster size?
+#cluster assignment/membership?
+#- cluster center?
+#Plot x colored by the kmeans cluster assignment and add cluster centers as blue points
+
+```{r}
+k<-kmeans(x,centers=2,nstart=20)
+```
+```{r}
+k$cluster
+```
+```{r}
+table(k$cluster)
+```
+```{r}
+plot(x,col=k$cluster)
+##funciont point will add points to an existing plot
+points(k$centers, col="blue",pch=15)
+
+```
+
+
+#LET'S MOVE ON TO HIERARCHICAL CLUSTERING
+```{r}
+hc <-hclust ( dist(x))
+```
+#plot my results
+```{r}
+plot (hc)
+abline(h=6, col="red")
+abline(h=4, col="blue")
+cutree(hc,h=6)
+```
+```{r}
+grps<-cutree(hc,h=4)
+table(grps)
+```
+#I can also cut the tree to yeld a given 'k' groups/clusters
+```{r}
+cutree(hc,k=2)
+```
+```{r}
+plot(x, col=grps)
+```
+
+
+```{r}
+# Step 1. Generate some example data for clustering
+x <- rbind(
+ matrix(rnorm(100, mean=0, sd = 0.3), ncol = 2), # c1
+ matrix(rnorm(100, mean = 1, sd = 0.3), ncol = 2), # c2
+ matrix(c(rnorm(50, mean = 1, sd = 0.3), # c3
+ rnorm(50, mean = 0, sd = 0.3)), ncol = 2))
+colnames(x) <- c("x", "y")
+```
+
+```{r}
+# Step 2. Plot the data without clustering
+plot(x)
+```
+
+```{r}
+# Step 3. Generate colors for known clusters
+# (just so we can compare to hclust results)
+col <- as.factor( rep(c("c1","c2","c3"), each=50) )
+plot(x, col=col)
+```
+```{r}
+hc <-hclust ( dist(x))
+```
+#plot my results
+```{r}
+plot (hc)
+
+```
+
+
+
+
+
+
+

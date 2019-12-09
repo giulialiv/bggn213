@@ -1,0 +1,57 @@
+---
+title: "data"
+author: "Giulia Livrizzi"
+date: "10/25/2019"
+output: html_document
+---
+```{r}
+
+x <- read.csv("expression.csv",row.names = 1)
+mydata<-x
+```
+
+```{r}
+pca <- prcomp(t(mydata), scale=TRUE) 
+```
+```{r}
+## lets do PCA
+pca <- prcomp(t(mydata), scale=TRUE)
+## See what is returned by the prcomp() function
+attributes(pca)
+# $names
+#[1] "sdev" "rotation" "center" "scale" "x"
+#
+# $class
+#[1] "prcomp"
+```
+```{r}
+## lets do PCA
+pca <- prcomp(t(mydata), scale=TRUE)
+## See what is returned by the prcomp() function
+attributes(pca)
+# $names
+#[1] "sdev" "rotation" "center" "scale" "x"
+#
+# $class
+#[1] "prcomp"
+```
+```{r}
+## lets do PCA
+pca <- prcomp(t(mydata), scale=TRUE)
+## A basic PC1 vs PC2 2-D plot
+plot(pca$x[,1], pca$x[,2])
+## Precent variance is often more informative to look at
+pca.var <- pca$sdev^2
+pca.var.per <- round(pca.var/sum(pca.var)*100, 1) 
+barplot(pca.var.per, main="Scree Plot",
+ xlab="Principal Component", ylab="Percent Variation")
+```
+```{r}
+plot(pca$x[,1:2], col=c("red","red","red","red","red","blue","blue","blue","blue", "blue"))
+#we can use function replicate to make the code shorter
+rep("red",5)
+```
+
+
+
+

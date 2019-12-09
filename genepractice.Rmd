@@ -1,0 +1,43 @@
+---
+title: "PCAUKfood"
+author: "Giulia Livrizzi"
+date: "10/25/2019"
+output: html_document
+---
+
+```{r}
+
+x <- read.csv("UK_foods.csv")
+mydata<-x
+```
+```{r}
+dim(x)
+```
+```{r}
+rownames(x) <- x[,1]
+x <- x[,-1]
+head(x)
+```
+```{r}
+dim(x)
+```
+```{r}
+barplot(as.matrix(x), beside=FALSE, col=rainbow(nrow(x)))
+```
+```{r}
+pairs(x, col=rainbow(10), pch=16)
+```
+
+```{r}
+pca <- prcomp( t(x) )
+plot(pca$x[,1:2], xlab="PC1", ylab="PC2")
+text(pca$x[,1], pca$x[,2], colnames(x))
+```
+```{r}
+plot(pca$x[,1], pca$x[,2])
+#    xlab="PC1", ylab="PC2", xlim=c(-270,500) )
+#text(pca$x[,1], pca$x[,2], colnames(x))
+abline(h=0,col="grey",lty=2)
+```
+
+
