@@ -1,6 +1,4 @@
-title: "Giulia's Bioinformatics Class (BGGN213, Fall 2019)"
-
-title-img: //github.com/giulialiv/bggn213/blob/a9bbe1e36158261ad19f0fdcc086f5afb980d606/IMG_4258%20(1).jpg
+**Giulia's Bioinformatics Class (BGGN213, Fall 2019)**
 
 This is my work from [BGGN13 at UC San Diego] Fall 2019
 
